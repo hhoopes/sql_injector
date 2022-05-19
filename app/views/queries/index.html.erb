@@ -3,64 +3,62 @@
     <h1 class="fst-italic">Inject Some SQL!</h1>
     <%= render 'sql_form' %>
   
-  <%= turbo_frame_tag "query_builder" do %>
-
-  <div class="row feedback">
-    <div class="col-12">
-      <div class="pt-2">
-        <% if @error %>
-          <h4>Error Message:</h4>
-          <%= @error.inspect %>
-        <% end %>
+    <%= turbo_frame_tag "query_builder" do %>
+      <div class="row feedback">
+        <div class="col-12">
+          <div class="pt-2">
+            <% if @error %>
+              <h4>Error Message:</h4>
+              <%= @error.inspect %>
+            <% end %>
+          </div>
+        <div class="pt-2">
+          <% if @results %>
+            <h4>Return Value</h4>
+            <%= ruby_color @results.inspect %>
+          <% end %>
+        </div>
+        <div class="pt-2">
+          <% if @sql_string %>
+            <h4>Actual SQL</h4>
+            <%= sql_color @sql_string %>
+          <% end %>
+        </div>
       </div>
-      <div class="pt-2">
-        <% if @results %>
-          <h4>Return Value</h4>
-          <%= ruby_color @results.inspect %>
-        <% end %>
-      </div>
-      <div class="pt-2">
-        <% if @sql_string %>
-          <h4>Actual SQL</h4>
-          <%= sql_color @sql_string %>
-      </div>
-      <% end %>
-    </div>  
+    <% end %>
   </div>  
-<% end %>
 </div>
 
-  <div class = "col-7">
-    <div id='Choose a method' class='card selected_content default'>
-      Choose an Active Record method to learn more about how to exploit it.
-    </div>
-    <div>
-      <% @queries.each do |q| %>
-        <div class='card selected_content' id='<%= q[:action] %>'>
-          <div class="card-header">
-            <a href="<%= q[:link] %>" target="_blank"><%= q[:name] %></a>
-          </div>
-          <ul class="list-group list-group-flush">
-            <li class="list-group-item">
-              <h6 class="subtitle">Active Record:</h6>
-              <%= ruby_color q[:query] %>
-            </li>
-            <li class="list-group-item">
-              <h6 class="subtitle">Generated SQL:</h6>
-              <%= sql_color q[:sql] %>
-            </li>
-            <li class="list-group-item">
-              <%= q[:explanation] %>
-            </li>
-            <li class="list-group-item">
-              <h6 class="subtitle">Spoiler:
-              <blockquote class="spoiler">
-                <%= q[:input][:example] %>
-              </blockquote>
-            </li>
-          </ul>
+<div class = "col-7">
+  <div id='Choose a method' class='card selected_content default'>
+    Choose an Active Record method to learn more about how to exploit it.
+  </div>
+  <div>
+    <% @queries.each do |q| %>
+      <div class='card selected_content' id='<%= q[:action] %>'>
+        <div class="card-header">
+          <a href="<%= q[:link] %>" target="_blank"><%= q[:name] %></a>
         </div>
-      <% end %>
-    </div>
+        <ul class="list-group list-group-flush">
+          <li class="list-group-item">
+            <h6 class="subtitle">Active Record:</h6>
+            <%= ruby_color q[:query] %>
+          </li>
+          <li class="list-group-item">
+            <h6 class="subtitle">Generated SQL:</h6>
+            <%= sql_color q[:sql] %>
+          </li>
+          <li class="list-group-item">
+            <%= q[:explanation] %>
+          </li>
+          <li class="list-group-item">
+            <h6 class="subtitle">Spoiler:
+            <blockquote class="spoiler">
+              <%= q[:input][:example] %>
+            </blockquote>
+          </li>
+        </ul>
+      </div>
+    <% end %>
   </div>
 </div>
