@@ -1,24 +1,9 @@
 # README
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+SQLi Workbook was created to provide a workspace for students attending RailsConf 2022. As attendees learned about how ActiveRecord methods were implemented differently, they had the ability to use this workbook to test different malicious strings, and after submission, see the resulting SQL string, along with the output from the system. 
 
-Things you may want to cover:
+The concept was borrowed from [Rails SQLi](https://rails-sqli.org/), and but implemented differently to account for many developers needing to work in the same running application (hence mechanisms like new sessions creating new databases). 
 
-* Ruby version
+If you are interested in a course like this for your own company or group, contact [Meristem Infosec](https://www.meristeminfosec.com/). 
 
-* System dependencies
-
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+This code is not available for commercial use, but you are welcome to try it out for your own education or for small group instruction.
